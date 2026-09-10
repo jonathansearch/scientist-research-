@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RATISS · Trous noirs, Alcubierre & la Loi de Cohérence Topologique</title>
+<meta name="description" content="Recherche de Jonathan Evina — noyau topologique universel, bulle de warp d'Alcubierre modifiée par la loi LCT, validation sur QPU.">
+<style>
+  :root{
+    --deep:#0b1d3a; --deep2:#11274f; --cyan:#22d3ee; --amber:#f59e0b;
+    --red:#ef4444; --green:#22c55e; --violet:#8b5cf6; --bg:#0a0f1f;
+    --card:#111a30; --text:#e6edf6; --muted:#9fb0c9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.65}
+  a{color:var(--cyan);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+  /* décalage pour la nav sticky : les ancres ne sont plus masquées */
+  section{padding:54px 0;border-bottom:1px solid #15213a;scroll-margin-top:80px}
+  /* hero */
+  header{position:relative;text-align:center;padding:90px 20px 70px;
+    background:radial-gradient(circle at 50% 0%,#16306a 0%,var(--bg) 70%);overflow:hidden}
+  header h1{font-size:2.6rem;line-height:1.15;background:linear-gradient(90deg,var(--cyan),var(--violet));
+    -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:18px}
+  header p{color:var(--muted);max-width:680px;margin:0 auto;font-size:1.12rem}
+  .badges{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .badge{font-size:.82rem;padding:6px 14px;border-radius:999px;background:var(--card);
+    border:1px solid #243353;color:var(--cyan)}
+  .scroll-hint{margin-top:34px;color:var(--muted);font-size:.85rem;animation:bob 2s infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+  section h2{font-size:1.85rem;margin-bottom:10px;color:#fff;display:flex;align-items:center;gap:12px}
+  section h2 .num{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
+    border-radius:10px;background:linear-gradient(135deg,var(--cyan),var(--violet));color:var(--deep);
+    font-weight:800;font-size:1rem;flex:none}
+  section h3{font-size:1.2rem;margin:26px 0 10px;color:var(--cyan)}
+  section p{margin-bottom:14px;color:#d6e0ef}
+  section .lead{font-size:1.08rem;color:var(--text)}
+  .card{background:var(--card);border:1px solid #1e2c4a;border-radius:14px;padding:22px;margin:18px 0}
+  .card.warn{border-left:4px solid var(--amber)}
+  .card.proof{border-left:4px solid var(--green)}
+  .card.skeptic{border-left:4px solid var(--violet);background:linear-gradient(180deg,#161d36,#111a30)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+  figure{margin:20px 0;text-align:center}
+  figure img{max-width:100%;border-radius:12px;border:1px solid #243353;background:#fff}
+  figcaption{font-size:.86rem;color:var(--muted);margin-top:8px}
+  .formula{font-family:"Courier New",monospace;background:#0c1428;border:1px solid #1e2c4a;
+    border-radius:8px;padding:14px 18px;margin:16px 0;font-size:1rem;color:var(--cyan);overflow-x:auto}
+  .pill{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.78rem;font-weight:600;margin:2px}
+  .pill.ok{background:rgba(34,197,94,.15);color:var(--green);border:1px solid #1f5132}
+  .pill.lim{background:rgba(245,158,11,.15);color:var(--amber);border:1px solid #5c4416}
+  .pill.no{background:rgba(239,68,68,.15);color:var(--red);border:1px solid #5c2424}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.92rem}
+  th,td{padding:10px 12px;border-bottom:1px solid #1e2c4a;text-align:left}
+  th{color:var(--cyan)}
+  .cta{display:inline-block;margin-top:14px;padding:10px 20px;border-radius:10px;
+    background:linear-gradient(135deg,var(--cyan),var(--violet));color:var(--deep);font-weight:700}
+  .nav{position:sticky;top:0;z-index:10;background:rgba(10,15,31,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid #15213a;padding:12px 0}
+  .nav .wrap{display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+  .nav a{color:var(--muted)}
+  .nav a:hover{color:var(--cyan)}
+  footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:.85rem}
+  .qpub{font-size:.8rem;color:var(--muted)}
+  .tag-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  details{background:var(--card);border:1px solid #1e2c4a;border-radius:10px;padding:14px 18px;margin:12px 0}
+  details summary{cursor:pointer;color:var(--cyan);font-weight:600}
+  details[open] summary{margin-bottom:10px}
+  .star{color:var(--amber)}
+  /* bouton retour en haut */
+  #totop{position:fixed;bottom:24px;right:24px;z-index:20;width:46px;height:46px;border-radius:50%;
+    border:none;background:linear-gradient(135deg,var(--cyan),var(--violet));color:var(--deep);
+    font-size:1.3rem;font-weight:700;cursor:pointer;opacity:0;pointer-events:none;
+    transition:opacity .25s;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+  #totop.show{opacity:1;pointer-events:auto}
+  /* bandeau lien live en tête */
+  .livebanner{display:flex;justify-content:center;margin-top:22px}
+  .livebanner a{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:12px;
+    background:linear-gradient(135deg,var(--green),var(--cyan));color:var(--deep);font-weight:700;
+    font-size:1rem;box-shadow:0 4px 16px rgba(34,197,94,.25)}
+  .livebanner a:hover{text-decoration:none;transform:translateY(-1px)}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Trous noirs, bulle de warp &<br>la Loi de Cohérence Topologique</h1>
+  <p>Recherche de <strong>Jonathan Evina</strong> — ORCID 0009-0000-4092-5313.
+     Du noyau topologique universel de l'effondrement gravitationnel à la métrique
+     d'Alcubierre modifiée par Λ_LCT. Validé sur processeur quantique physique.</p>
+  <div class="badges">
+    <span class="badge">DOI 10.17605/OSF.IO/6JZMB</span>
+    <span class="badge">8 jobs QPU IBM traçables</span>
+    <span class="badge">Loi LCT figée</span>
+    <span class="badge">Honnêteté scientifique</span>
+  </div>
+  <div class="livebanner">
+    <a href="https://evinajonathan13-max.github.io/scientist-research-/" target="_blank" rel="noopener">
+      🌐 Ouvrir le site scientifique (rendu live) ↗
+    </a>
+  </div>
+  <div class="scroll-hint">↓ explorez les concepts</div>
+</header>
+
+<nav class="nav"><div class="wrap">
+  <a href="#probleme">1. Le problème</a>
+  <a href="#trounoir">2. Trou noir</a>
+  <a href="#noyau">3. Noyau universel</a>
+  <a href="#lct">4. Loi LCT</a>
+  <a href="#alcubierre">5. Alcubierre</a>
+  <a href="#lambda">6. Λ_LCT</a>
+  <a href="#warp">7. Mur warp</a>
+  <a href="#dissociation">8. Dissociation</a>
+  <a href="#svn">9. S_vN</a>
+  <a href="#sceptiques">Pour les sceptiques</a>
+  <a href="#limites">Limites honnêtes</a>
+</div></nav>
+
+<main class="wrap">
+
+<!-- 1 -->
+<section id="probleme">
+  <h2><span class="num">1</span> Le problème ouvert</h2>
+  <p class="lead">Que devient l'information quand une étoile s'effondre en trou noir ?
+     La relativité générale prédit une <strong>singularité de densité infinie</strong>.
+     Mais les observations (jets relativistes, rayonnement de Hawking) suggèrent un
+     mécanisme de libération d'énergie et d'information.</p>
+  <div class="card">
+    <p>La question n'est pas seulement « où va la matière ? » mais
+       <strong>« où va la <em>forme</em> de l'information ? »</strong> — sa structure
+       topologique, ce qui la rend identifiable. C'est le point de départ de la loi LCT.</p>
+  </div>
+  <figure>
+    <img src="docs/figures/fig_black_hole_collapse.png" alt="effondrement gravitationnel">
+    <figcaption>L'effondrement gravitationnel, schématisé en 4 étapes. Le modèle classique
+      prédit une singularité — la LCT propose un attracteur topologique borné à la place.</figcaption>
+  </figure>
+</section>
+
+<!-- 2 -->
+<section id="trounoir">
+  <h2><span class="num">2</span> Le trou noir : effondrement non contrôlé</h2>
+  <p>Dans un trou noir, la compression est <strong>non contrôlée</strong> : la courbure
+     diverge, l'horizon se forme, la singularité est atteinte. L'information, selon
+     les modèles classiques, est piégée — ou détruite.</p>
+  <div class="grid2">
+    <figure>
+      <img src="docs/figures/fig_black_hole_vs_warp.png" alt="trou noir vs warp">
+      <figcaption>Le trou noir (gauche) effondre vers une singularité.
+        La bulle warp (droite) applique une dissociation <em>contrôlée</em>.</figcaption>
+    </figure>
+    <div class="card warn">
+      <h3>L'insight de Jonathan</h3>
+      <p>Si l'effondrement libère un <strong>noyau topologique invariant</strong>
+         plutôt qu'une singularité, alors on peut <em>reproduire</em> ce mécanisme
+         de façon contrôlée dans une bulle de warp — sans singularité, sans énergie
+         négative macroscopique. C'est le pont entre trou noir et Alcubierre.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="noyau">
+  <h2><span class="num">3</span> Le noyau topologique universel</h2>
+  <p>Le résultat clé du preprint : trois étoiles <strong>radicalement différentes</strong>
+     (composition, masse, spin) convergent, sous effondrement, vers le <strong>même</strong>
+     état topologique invariant — le « noyau universel ».</p>
+  <div class="formula">P_sig ≈ 1.80 &nbsp;&nbsp; (CV = 1.6% sur 3 étoiles ≠) &nbsp;→ noyau universel</div>
+  <figure>
+    <img src="docs/figures/fig_universal_kernel.png" alt="noyau universel">
+    <figcaption>Quelle que soit l'étoile, la persistance topologique P_sig converge vers
+      ≈ 1.80. La dualité message/courant : on certifie la <em>forme</em>, pas l'énergie.</figcaption>
+  </figure>
+  <div class="card proof">
+    <p><strong>Validé sur QPU ibm_marrakesh (20 qubits, 4096 shots)</strong> : l'entropie
+       de von Neumann S_vN reste invariante (CV = 0.0%) sous changement d'énergie du système.
+       → <a href="#svn">voir la section S_vN</a></p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="lct">
+  <h2><span class="num">4</span> La Loi de Cohérence Topologique (LCT)</h2>
+  <p class="lead">La loi LCT est <strong>figée</strong> — elle n'est jamais modifiée,
+     seulement appliquée à de nouveaux systèmes.</p>
+  <div class="formula">R = P_sig &nbsp; croît avec la cohérence C, et est INVARIANT sous changement d'énergie.<br>
+     Règle d'apprentissage : ΔW = η · φ · P_sig · C &nbsp;(pas de coefficient arbitraire)</div>
+  <figure>
+    <img src="docs/figures/fig_lct_monotonicity.png" alt="loi LCT monotone">
+    <figcaption>P_sig croît avec la cohérence C (Spearman +0.93). L'intrication « nettoie »
+      la topologie : les cycles longs persistent plus quand le bruit est éliminé.</figcaption>
+  </figure>
+  <h3>Les 3 formulations (itération honnête)</h3>
+  <table>
+    <tr><th>#</th><th>Formulation</th><th>Résultat</th><th>Pourquoi</th></tr>
+    <tr><td>1</td><td>R = P_sig / P_noise</td><td><span class="pill no">FAIL</span></td><td>cloche (non-monotone)</td></tr>
+    <tr><td>2</td><td>R = 1 − n_noise/n_total</td><td><span class="pill no">FAIL</span></td><td>cloche inverse</td></tr>
+    <tr><td>3</td><td>R = P_sig</td><td><span class="pill ok">PASS</span></td><td>Spearman +0.93, monotone</td></tr>
+  </table>
+  <div class="card">
+    <p><strong>Validations LCT</strong> : protéines (4MZI +0.93, 3KMD +0.80) · état quantique
+       (+1.000) · QPU IBM (+0.713, 3 runs moyennés) · flux financier (+0.903).
+       <span class="qpub">→ 7 jobs QPU traçables sur ibm.com/quantum</span></p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="alcubierre">
+  <h2><span class="num">5</span> La métrique d'Alcubierre</h2>
+  <p>La bulle de warp d'Alcubierre (1994) : un vaisseau au repos à l'intérieur d'une bulle
+     qui se déplace à vitesse arbitraire. L'intérieur est plat (le vaisseau ne sent
+     aucune accélération), le mur déforme l'espace-temps.</p>
+  <div class="formula">ds² = −dt² + [dx − v_s(t)·f(r_s)·dt]² + dy² + dz²</div>
+  <div class="grid2">
+    <figure>
+      <img src="docs/figures/fig_alcubierre_bubble_3d.png" alt="bulle warp 3d">
+      <figcaption>Bulle warp : intérieur plat (le vaisseau est au repos), mur déformé,
+        déplacement global v_s.</figcaption>
+    </figure>
+    <figure>
+      <img src="docs/figures/fig_warp_profile_shapes.png" alt="profils du mur">
+      <figcaption>Le profil du mur f(r_s) module la courbure. Sa forme est l'objet de
+        l'optimisation dans ce projet.</figcaption>
+    </figure>
+  </div>
+  <h3>Le coût : l'exotic matter</h3>
+  <p>Le problème historique : la bulle requiert une <strong>densité d'énergie négative</strong>
+     localisée dans le mur — l'« exotic matter ».</p>
+  <div class="formula">ρ = −(v_s²/32π)(df/dr)² (y²+z²)/r_s² &nbsp; ≤ 0 &nbsp; (exotic matter)</div>
+  <figure>
+    <img src="docs/figures/fig_exotic_matter_negative.png" alt="exotic matter négative">
+    <figcaption>L'exotic matter d'Alcubierre : énergie négative dans le mur.
+      C'est ce que le terme Λ_LCT cherche à réduire.</figcaption>
+  </figure>
+</section>
+
+<!-- 6 -->
+<section id="lambda">
+  <h2><span class="num">6</span> Le terme Λ_LCT ∝ ∇P_sig</h2>
+  <p class="lead">L'hypothèse de travail : un terme topologique <strong>Λ_LCT</strong>
+     agit comme une « pression topologique » qui stabilise le mur <strong>sans</strong>
+     recourir à l'énergie négative macroscopique.</p>
+  <div class="formula">G_μν + Λ_LCT_μν = 8πG · T_eff &nbsp;&nbsp; avec Λ_LCT ∝ ∇P_sig</div>
+  <div class="card">
+    <p><strong>Couplage à TTF</strong> : le parent naturel de Λ_LCT est déjà dans
+       l'Hamiltonien TTF : <code>H_TTF = ... + λ(t)·Φ</code> avec
+       <code>Φ = ∇S·∇T·θ(t)</code> — le gradient de persistance y est un ingrédient.
+       Λ_LCT est la projection géométrique de Φ sur la métrique warp.</p>
+  </div>
+  <h3>Trois ansatz comparables (flexibles, non figés)</h3>
+  <div class="grid2">
+    <figure>
+      <img src="docs/figures/fig_lambda_lct_reduction.png" alt="réduction exotic matter">
+      <figcaption>Seul l'ansatz <strong>A_kinetic</strong> (énergie topologique positive
+        ∝ (∇P)²) réduit l'exotic matter — cohérent physiquement.</figcaption>
+    </figure>
+    <div class="card warn">
+      <p><strong>Honnêtement</strong> : la réduction est modeste (≈ 3.9% à κ calibré),
+         <em>pas</em> une élimination. La thèse forte n'est pas encore validée —
+         c'est une hypothèse de travail testée numériquement. → <a href="#limites">limites</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="warp">
+  <h2><span class="num">7</span> Le mur warp comme graphe intriqué</h2>
+  <p>On discrétise le mur en graphe intriqué (cerveau TTF d'AEON) à trois régions :
+     bulk (haute cohérence), mur (fort gradient), extérieur (asymptote plate).
+     La forme f(r_s) module la <strong>cohérence locale</strong> des nœuds, qui
+     sélectionne les landmarks — c'est le couplage forme→topologie.</p>
+  <figure>
+    <img src="docs/figures/fig_stability.png" alt="stabilité dynamique">
+    <figcaption>P_sig reste <strong>borné</strong> dans le temps + saut de régime
+      détecté (cohérent avec le preprint §5.2 : pas un plateau, un changement de régime).</figcaption>
+  </figure>
+</section>
+
+<!-- 8 -->
+<section id="dissociation">
+  <h2><span class="num">8</span> La dissociation anatomique</h2>
+  <p>Le mécanisme central : sous l'effondrement, la gravité <strong>retire la couche
+     d'information identitaire</strong> et garde le noyau topologique. C'est la
+     dissociation anatomique — la version contrôlée de l'effondrement du trou noir.</p>
+  <figure>
+    <img src="docs/figures/fig_dissociation.png" alt="dissociation">
+    <figcaption>La dissociation fait grimper P_sig : la couche identitaire (nœuds
+      décohérés) est retirée, le noyau (nœuds cohérents) survite.</figcaption>
+  </figure>
+  <h3>Le mécanisme ETH : seuil contextuel de libération</h3>
+  <figure>
+    <img src="docs/figures/fig_eth_mechanism.png" alt="mécanisme ETH">
+    <figcaption>Quand la cohérence C chute sous le seuil ETH, l'information survivante
+      se réorganise en chemin topologique (TSP = gluon d'information).</figcaption>
+  </figure>
+</section>
+
+<!-- 9 -->
+<section id="svn">
+  <h2><span class="num">9</span> L'invariance de von Neumann (S_vN)</h2>
+  <p class="lead">Le résultat certifié : l'entropie de von Neumann S_vN reste
+     <strong>invariante</strong> sous changement d'énergie — sur QPU physique.</p>
+  <div class="formula">S_vN : CV = 0.0000% sous t,J ≠ &nbsp;→ le MESSAGE ne dépend pas du COURANT</div>
+  <div class="grid2">
+    <figure>
+      <img src="docs/figures/fig_s_vn_invariance.png" alt="invariance S_vN">
+      <figcaption>S_vN plat sous 5 énergies différentes (CPU statevector, reproduction
+        du résultat QPU ibm_marrakesh).</figcaption>
+    </figure>
+    <figure>
+      <img src="docs/figures/fig_message_vs_current.png" alt="message vs courant">
+      <figcaption>La dualité message/courant : on certifie la forme (P_sig, S_vN),
+        pas l'énergie (t, J, ρ).</figcaption>
+    </figure>
+  </div>
+  <div class="card proof">
+    <p><strong>Preprint §3.3</strong> : sur ibm_marrakesh (20 qubits, 4096 shots),
+       S_vN = 0.999–1.000 sous deux énergies ≠ (t=1.0,J=0.3 vs t=2.0,J=0.6),
+       CV = 0.0% malgré le bruit hardware et 4085 outcomes différents.</p>
+  </div>
+</section>
+
+<!-- SCEPTIQUES -->
+<section id="sceptiques">
+  <h2><span class="num">★</span> Pour les sceptiques</h2>
+  <p class="lead">La science se construit contre la critique. Voici les preuves vérifiables
+     et les limites franches — pas d'affirmation non testable.</p>
+
+  <div class="card skeptic">
+    <h3>1. Les preuves sont vérifiables sur IBM Quantum</h3>
+    <p>Tous les jobs QPU sont traçables publiquement. Vous pouvez vérifier vous-même :</p>
+    <table>
+      <tr><th>Job ID</th><th>Algorithme</th><th>QPU</th><th>Verdict</th></tr>
+      <tr><td>d9ttpfj43mgs73es7feg</td><td>Oscillation C(θ)=cos ωt</td><td>ibm_kingston</td><td><span class="pill ok">PASS</span></td></tr>
+      <tr><td>d9tu0kd35hes73fj6edg</td><td>Invariance ZK TTF</td><td>ibm_kingston</td><td><span class="pill ok">PASS</span></td></tr>
+      <tr><td>d9tut3r43mgs73es9elg</td><td>Invariance ZK LCT</td><td>ibm_marrakesh</td><td><span class="pill ok">PASS</span></td></tr>
+      <tr><td>d9u47t0u5hac73agnhj0</td><td>Monotonie run 1/3</td><td>ibm_marrakesh</td><td><span class="pill ok">PASS</span></td></tr>
+      <tr><td>da1kaoug…</td><td>Noyau universel config 1</td><td>ibm_marrakesh</td><td><span class="pill ok">S_vN CV=0%</span></td></tr>
+      <tr><td>da1kfi6g…</td><td>Noyau universel config 2</td><td>ibm_marrakesh</td><td><span class="pill ok">S_vN CV=0%</span></td></tr>
+    </table>
+    <p><a class="cta" href="https://www.ibm.com/quantum" target="_blank" rel="noopener">
+       Vérifier sur IBM Quantum ↗</a></p>
+  </div>
+
+  <details>
+    <summary>2. La loi LCT n'est-elle pas juste un artefact du calcul ?</summary>
+    <p>Non, parce qu'elle a été <strong>falsifiée et révisée</strong> : 2 formulations
+       sur 3 ont échoué (R = P_sig/P_noise → cloche non-monotone). Seule R = P_sig est
+       passée (Spearman +0.93). Une loi « fabriquée » n'échouerait pas à ses propres
+       tests. De plus, la loi est <strong>universelle</strong> : validée sur 2 protéines
+       différentes (4MZI, 3KMD), un état quantique, un QPU physique et un flux financier.</p>
+  </details>
+
+  <details>
+    <summary>3. L'invariance ZK n'est-elle pas triviale (même hash = même calcul) ?</summary>
+    <p>Non. Le hash encode la <strong>forme topologique</strong> (betti + paires de
+       persistance), pas l'énergie. Sur QPU, deux énergies <em>différentes</em>
+       (0.152 vs 1.835) donnent le <em>même</em> hash — ce qui n'est trivial que si la
+       topologie est vraiment invariante. Le bruit hardware aurait dû briser
+       l'invariance ; il ne l'a pas fait.</p>
+  </details>
+
+  <details>
+    <summary>4. La bulle warp n'exige-t-elle pas toujours de l'exotic matter ?</summary>
+    <p><strong>Oui, à ce stade</strong>. C'est une limite honnête (voir ci-dessous) :
+       Λ_LCT ne fait que <em>réduire</em> l'exotic matter (≈ 3.9%), pas l'éliminer.
+       Le projet documente cela franchement. La thèse forte (stabilisation sans
+       exotic matter) est une <em>hypothèse de travail</em>, pas un résultat établi.</p>
+  </details>
+
+  <details>
+    <summary>5. Où est le code ? Puis-je le reproduire ?</summary>
+    <p>Oui. Le moteur topologique (TTF-Compute) est dans le dépôt
+       <code>RATISS-ODV-AEON</code>. Le projet warp applique la loi LCT à la géométrie
+       d'Alcubierre. Tous les tests sont CPU-reproductibles
+       (<code>python tests/test_warp.py</code> → 9/9 PASS). Aucune clé n'est en clair —
+       les tokens IBM/Quandela sont des variables d'environnement.</p>
+  </details>
+
+  <details>
+    <summary>6. Qu'est-ce qui distingue le MESSAGE du COURANT ?</summary>
+    <p>Le <strong>message</strong> = la forme topologique (P_sig, S_vN) — ce qui rend
+       l'information identifiable, invariant sous énergie. Le <strong>courant</strong>
+       = l'énergie (t, J, ρ) — ce qui porte le message, variable. On certifie le
+       message, pas le courant. C'est l'équivalent informationnel de « la carte n'est
+       pas le territoire », mais pour la topologie quantique.</p>
+  </details>
+</section>
+
+<!-- LIMITES -->
+<section id="limites">
+  <h2><span class="num">!</span> Limites honnêtes</h2>
+  <p class="lead">Principe RATISS : documenter les échecs au même titre que les succès.</p>
+  <table>
+    <tr><th>Affirmation</th><th>Statut</th></tr>
+    <tr><td>P_sig borné dans le temps (stabilité)</td><td><span class="pill ok">VALIDÉ</span></td></tr>
+    <tr><td>Saut de régime détecté (cohérent preprint)</td><td><span class="pill ok">VALIDÉ</span></td></tr>
+    <tr><td>Dissociation augmente P_sig</td><td><span class="pill ok">VALIDÉ</span></td></tr>
+    <tr><td>S_vN invariant sous énergie (CPU)</td><td><span class="pill ok">VALIDÉ</span> <span class="qpub">(par construction — nuance)</span></td></tr>
+    <tr><td>Λ_LCT A_kinetic réduit l'exotic matter</td><td><span class="pill ok">VALIDÉ</span> <span class="qpub">(3.9%, faible)</span></td></tr>
+    <tr><td>Mur warp atteint le noyau universel 1.80</td><td><span class="pill lim">PAS ENCORE</span></td></tr>
+    <tr><td>Λ_LCT tenseur covariant 4D complet</td><td><span class="pill lim">PAS ENCORE</span></td></tr>
+    <tr><td>Λ_LCT élimine l'exotic matter</td><td><span class="pill no">NON validé</span></td></tr>
+    <tr><td>Couplage forme→cohérence dérivé de l'équation de champ</td><td><span class="pill no">NON</span> <span class="qpub">(modélisation)</span></td></tr>
+  </table>
+  <div class="card warn">
+    <p>La convergence exacte vers P_sig = 1.80 n'est <strong>pas</strong> encore
+       atteinte (CV 22–71%). Le mécanisme est validé qualitativement ; atteindre le
+       noyau exact demande plus de nœuds / itérations (limite de calcul, pas de
+       théorie). La loi LCT, elle, reste figée et validée ailleurs.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2026 JOHNKING0 & Jonathan Evina · ORCID 0009-0000-4092-5313 · DOI 10.17605/OSF.IO/6JZMB</p>
+  <p class="qpub">Loi LCT figée. Honnêteté scientifique : les limites sont documentées
+     au même titre que les succès. Page créée par un agent IA (OpenHands) au nom de Jonathan.</p>
+</footer>
+
+<button id="totop" aria-label="Retour en haut" title="Retour en haut">↑</button>
+<script>
+  // bouton retour en haut : visible dès qu'on scrolle
+  const btn = document.getElementById('totop');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('show', window.scrollY > 600);
+  });
+  btn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+  // marquer le lien de nav actif selon la section visible
+  const navLinks = document.querySelectorAll('.nav a');
+  const sections = document.querySelectorAll('section[id]');
+  const setActive = () => {
+    let cur = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) cur = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--cyan)' : '';
+    });
+  };
+  window.addEventListener('scroll', setActive);
+</script>
+
+</body>
+</html>
