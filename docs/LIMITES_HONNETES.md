@@ -139,3 +139,16 @@ de 24–40 nœuds est une hypothèse forte. L'extension à 100+ nœuds reste à 
 
 *Documenter les limites est aussi important que documenter les succès.
 Honnêteté scientifique.*
+
+### Mission Warp 2026 — limites honnêtes (#W)
+| Affirmation | Statut |
+|---|---|
+| Coût ∝ v^-1.4, seuil ~v3, v8 ×12.5 | ✅ mesuré (jouet 2D, N=656) |
+| Bulle propre 159% (messagers directifs) | ✅ mesuré (SI canalisation ; isotropes : -2%) |
+| Sync milieu aidée par la bulle | ❌ NON (R1=R2 au millième : spontanée) |
+| Mur suit le tanh | ⚠️ partiel (corr 0.24 : élastique étale le mur) |
+| Intérieur plat | ⚠️ traînée 0.44 (passagers temporaires) |
+| Horizon de bulle | ❌ PAS de horizon (diffusion libre, 200/200) |
+| Jumeaux = dilatation RG | ❌ couplage Kuramoto (+0.24 cyc), pas de c dans le jouet |
+| Extrapolation jouet → c | ❌ INTERDITE (×10⁷ hors données) |
+| Front-fantôme, mur épais | ⚠️ NON testés (propositions R12/scan σ) |

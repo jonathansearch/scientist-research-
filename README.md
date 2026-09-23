@@ -172,5 +172,33 @@ python scripts/generate_all_figures.py
 
 ---
 
+## 🛸 Mission Warp 2026 — 11 vols, 22 examens (NOUVEAU)
+
+Bulle d'Alcubierre (vrai profil tanh) + vaisseau 10 t dans l'univers-jouet
+RATISS : 11 vols simulés, batterie **W01–W22** (état, intrication, résidus,
+déformation, relativité). Code : [`warp/`](warp/) · Faits bruts :
+[`warp/resultats/w22.json`](warp/resultats/w22.json) · Doc complet :
+[`MISSION_WARP_2026.md`](MISSION_WARP_2026.md) · Construction :
+[`CONSTRUIRE_BULLE_WARP.md`](CONSTRUIRE_BULLE_WARP.md)
+
+| Verdict | Mesure |
+|---|---|
+| Seuil de rentabilité | facteur warp 0.36 (v2) → **1.95 (v4) → 12.5 (v8)** : au-delà de ~v3, la bulle bat le classique en coût ET temps |
+| Coût ∝ v^-1.4 | 122 → 59 → 22 → **6.8** : plus vite = moins cher (hit-and-run) |
+| Bulle PROPRE (canalisée) | messagers directifs : **159%** de l'expansion couverte, exotique **négatif** ; isotropes : -2% (traînée) |
+| Panne à mi-vol | on arrive quand même : +6% temps, **-19% coût** (dérive gratuite) |
+| Sillage | H1 **+12%** (rides topologiques), vite = propre (0.071 → 0.029) |
+| Jumeaux | bord **+0.24 cycles** (couplage, pas RG — honnête) |
+
+![cout vitesse](docs/figures/fig_warp_cout_vitesse.png)
+![vols](docs/figures/fig_warp_vols.png)
+![bulle](docs/figures/fig_warp_bulle.png)
+![champ](docs/figures/fig_warp_champ.png)
+
+Limites (W08 sync spontanée, W15 mur étalé 0.24, W20 pas d'horizon, pas
+d'extrapolation jouet→c) : [`docs/LIMITES_HONNETES.md`](docs/LIMITES_HONNETES.md).
+
+---
+
 *© 2026 JOHNKING0 & Jonathan Evina. Loi LCT figée. Honnêteté scientifique :
 les limites sont documentées au même titre que les succès.*
