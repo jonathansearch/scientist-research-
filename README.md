@@ -5,200 +5,200 @@
 [![RATISS Labs](https://img.shields.io/badge/RATISS_Labs-Deep_Tech_Sovereign-06b6d4)](https://github.com/jonathansearch)
 
 <p align="center">
-  <img src="docs/brand/sciresearch-logo.png" alt="Bulle de warp d'Alcubierre — intérieur plat, mur déformé, noyau topologique" width="220"/>
+  <img src="docs/brand/sciresearch-logo.png" alt="Alcubierre warp bubble — flat interior, warped wall, topological kernel" width="220"/>
 </p>
 
-<h1 align="center">scientist-research — Trous noirs, Alcubierre &amp; la Loi de Cohérence Topologique</h1>
+<h1 align="center">scientist-research — Black holes, Alcubierre &amp; the Topological Coherence Law</h1>
 
 <p align="center">
-  <a href="LICENSE"><img alt="Licence MIT" src="https://img.shields.io/badge/Licence-MIT-42d6ad?style=for-the-badge"></a>
+  <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/Licence-MIT-42d6ad?style=for-the-badge"></a>
   <img alt="Python" src="https://img.shields.io/badge/Python-Figures-79b8ff?style=for-the-badge&logo=python&logoColor=white">
-  <img alt="Site statique" src="https://img.shields.io/badge/Site-statique%20GitHub%20Pages-6929c4?style=for-the-badge">
+  <img alt="Static site" src="https://img.shields.io/badge/Site-statique%20GitHub%20Pages-6929c4?style=for-the-badge">
   <img alt="DOI" src="https://img.shields.io/badge/DOI-10.17605%2FOSF.IO%2F6JZMB-ff927d?style=for-the-badge">
 </p>
 
-> **Auteur** : Jonathan Evina · ORCID 0009-0000-4092-5313 · DOI 10.17605/OSF.IO/6JZMB
-> **Propriété intellectuelle** : JOHNKING0 & Jonathan Evina
-> **Loi fondamentale** : LCT (R = P_sig, ΔW = η·φ·P_sig·C) — **figée**
-> **Statut** : recherche en cours — résultats honnêtes (validés + limites documentées)
+> **Author**: Jonathan Evina · ORCID 0009-0000-4092-5313 · DOI 10.17605/OSF.IO/6JZMB
+> **Intellectual property**: JOHNKING0 & Jonathan Evina
+> **Fundamental law**: LCT (R = P_sig, ΔW = η·φ·P_sig·C) — **frozen**
+> **Status**: ongoing research — honest results (validated + documented limits)
 
-Site illustré de vulgarisation scientifique reliant l'**effondrement des trous
-noirs**, la **bulle de warp d'Alcubierre** et la **Loi de Cohérence Topologique
-(LCT)**. Fait pour expliquer les concepts compliqués avec des figures, et pour
-répondre aux sceptiques avec des preuves vérifiables.
+An illustrated science-outreach website linking **black hole collapse**, the
+**Alcubierre warp bubble** and the **Topological Coherence Law (LCT)**. Built to
+explain complicated concepts with figures, and to answer skeptics with
+verifiable evidence.
 
-▶️ **Ouvrir le site scientifique (rendu live)** : https://evinajonathan13-max.github.io/scientist-research-/
-💬 Code source du site : [`index.html`](index.html) (page web autonome, 13 figures intégrées)
+▶️ **Open the science site (live rendering)**: https://evinajonathan13-max.github.io/scientist-research-/
+💬 Site source code: [`index.html`](index.html) (self-contained web page, 13 embedded figures)
 
 ---
 
-## En une phrase
+## In one sentence
 
-Trois étoiles radicalement différentes s'effondrent vers le **même noyau
-topologique invariant** (P_sig ≈ 1.80, CV = 1.6%) ; l'entropie de von Neumann
-reste **invariante** (CV = 0.0%) sur QPU physique sous changement d'énergie — et
-ce mécanisme, reproduit de façon **contrôlée**, devient le mur d'une bulle de
-warp stabilisée par le terme Λ_LCT ∝ ∇P_sig.
+Three radically different stars collapse toward the **same invariant
+topological kernel** (P_sig ≈ 1.80, CV = 1.6%); the von Neumann entropy remains
+**invariant** (CV = 0.0%) on physical QPU under energy change — and this
+mechanism, reproduced in a **controlled** way, becomes the wall of a warp
+bubble stabilized by the Λ_LCT ∝ ∇P_sig term.
 
-## Les concepts (avec figures)
+## The concepts (with figures)
 
-### 1. Le problème ouvert
-L'effondrement gravitationnel prédit une singularité. Mais où va la *forme* de
-l'information ?
+### 1. The open problem
+Gravitational collapse predicts a singularity. But where does the *form* of
+the information go?
 
-![effondrement](docs/figures/fig_black_hole_collapse.png)
+![collapse](docs/figures/fig_black_hole_collapse.png)
 
-### 2. Trou noir vs bulle warp
-Le trou noir effondre (non contrôlé → singularité). La bulle warp applique une
-dissociation *contrôlée* (→ noyau universel, pas de singularité).
+### 2. Black hole vs warp bubble
+The black hole collapses (uncontrolled → singularity). The warp bubble applies
+a *controlled* dissociation (→ universal kernel, no singularity).
 
-![trou noir vs warp](docs/figures/fig_black_hole_vs_warp.png)
+![black hole vs warp](docs/figures/fig_black_hole_vs_warp.png)
 
-### 3. Le noyau topologique universel
-P_sig ≈ 1.80 quelle que soit l'étoile — la dualité message/courant : on
-certifie la forme, pas l'énergie.
+### 3. The universal topological kernel
+P_sig ≈ 1.80 regardless of the star — the message/current duality: certify
+the form, not the energy.
 
-![noyau universel](docs/figures/fig_universal_kernel.png)
+![universal kernel](docs/figures/fig_universal_kernel.png)
 
-### 4. La loi LCT (figée)
-R = P_sig croît avec la cohérence C (Spearman +0.93), invariant sous énergie.
+### 4. The LCT law (frozen)
+R = P_sig grows with coherence C (Spearman +0.93), invariant under energy.
 
-![loi LCT](docs/figures/fig_lct_monotonicity.png)
+![LCT law](docs/figures/fig_lct_monotonicity.png)
 
-| # | Formulation | Résultat |
+| # | Formulation | Result |
 |---|---|---|
-| 1 | R = P_sig / P_noise | FAIL (cloche) |
-| 2 | R = 1 − n_noise/n_total | FAIL (cloche inverse) |
+| 1 | R = P_sig / P_noise | FAIL (bell) |
+| 2 | R = 1 − n_noise/n_total | FAIL (inverse bell) |
 | 3 | **R = P_sig** | **PASS** (Spearman +0.93) |
 
-Validations : 4MZI +0.93, 3KMD +0.80, état quantique +1.000, QPU +0.713, finance +0.903.
+Validations: 4MZI +0.93, 3KMD +0.80, quantum state +1.000, QPU +0.713, finance +0.903.
 
-### 5. La métrique d'Alcubierre
-Intérieur plat, mur déformé, déplacement v_s. Coût : exotic matter (ρ < 0).
+### 5. The Alcubierre metric
+Flat interior, warped wall, displacement v_s. Cost: exotic matter (ρ < 0).
 
-![bulle warp 3d](docs/figures/fig_alcubierre_bubble_3d.png)
+![warp bubble 3d](docs/figures/fig_alcubierre_bubble_3d.png)
 
 ![exotic matter](docs/figures/fig_exotic_matter_negative.png)
 
-### 6. Le terme Λ_LCT ∝ ∇P_sig
-Pression topologique stabilisant le mur. 3 ansatz comparés : seul A_kinetic
-(énergie topo positive) réduit l'exotic matter.
+### 6. The Λ_LCT ∝ ∇P_sig term
+Topological pressure stabilizing the wall. 3 ansatz compared: only A_kinetic
+(positive topo energy) reduces exotic matter.
 
-![réduction exotic matter](docs/figures/fig_lambda_lct_reduction.png)
+![exotic matter reduction](docs/figures/fig_lambda_lct_reduction.png)
 
-### 7. Le mur warp comme graphe intriqué
-P_sig borné dans le temps + saut de régime (cohérent preprint §5.2).
+### 7. The warp wall as an entangled graph
+P_sig bounded in time + regime jump (consistent with preprint §5.2).
 
-![stabilité](docs/figures/fig_stability.png)
+![stability](docs/figures/fig_stability.png)
 
-### 8. La dissociation anatomique
-La gravité retire la couche identitaire, garde le noyau. Mécanisme ETH :
-seuil contextuel de libération.
+### 8. Anatomical dissociation
+Gravity removes the identity layer, keeps the kernel. ETH mechanism:
+contextual release threshold.
 
 ![dissociation](docs/figures/fig_dissociation.png)
 
-![mécanisme ETH](docs/figures/fig_eth_mechanism.png)
+![ETH mechanism](docs/figures/fig_eth_mechanism.png)
 
-### 9. L'invariance de von Neumann (S_vN)
-CV = 0.0000% sous énergie ≠ — le MESSAGE ne dépend pas du COURANT.
+### 9. The von Neumann invariance (S_vN)
+CV = 0.0000% under energy ≠ — the MESSAGE does not depend on the CURRENT.
 
-![invariance S_vN](docs/figures/fig_s_vn_invariance.png)
+![S_vN invariance](docs/figures/fig_s_vn_invariance.png)
 
-![message vs courant](docs/figures/fig_message_vs_current.png)
+![message vs current](docs/figures/fig_message_vs_current.png)
 
 ---
 
-## Pour les sceptiques (preuves vérifiables)
+## For skeptics (verifiable evidence)
 
-| Job ID | Algorithme | QPU | Verdict |
+| Job ID | Algorithm | QPU | Verdict |
 |--------|------------|-----|---------|
 | d9ttpfj43mgs73es7feg | Oscillation C(θ)=cos ωt | ibm_kingston | PASS |
-| d9tu0kd35hes73fj6edg | Invariance ZK TTF | ibm_kingston | PASS |
-| d9tut3r43mgs73es9elg | Invariance ZK LCT | ibm_marrakesh | PASS |
-| d9u47t0u5hac73agnhj0 | Monotonie run 1/3 | ibm_marrakesh | PASS |
-| da1kaoug… | Noyau universel config 1 | ibm_marrakesh | S_vN CV=0% |
-| da1kfi6g… | Noyau universel config 2 | ibm_marrakesh | S_vN CV=0% |
+| d9tu0kd35hes73fj6edg | ZK TTF invariance | ibm_kingston | PASS |
+| d9tut3r43mgs73es9elg | ZK LCT invariance | ibm_marrakesh | PASS |
+| d9u47t0u5hac73agnhj0 | Monotonicity run 1/3 | ibm_marrakesh | PASS |
+| da1kaoug… | Universal kernel config 1 | ibm_marrakesh | S_vN CV=0% |
+| da1kfi6g… | Universal kernel config 2 | ibm_marrakesh | S_vN CV=0% |
 
-**Vérifier vous-même** : https://www.ibm.com/quantum
+**Verify yourself**: https://www.ibm.com/quantum
 
-La loi LCT a été **falsifiée** (2 formulations sur 3 ont échoué). Seule R = P_sig
-est passée. Une loi « fabriquée » n'échouerait pas à ses propres tests.
+The LCT law was **falsified** (2 out of 3 formulations failed). Only R = P_sig
+passed. A "manufactured" law would not fail its own tests.
 
 ---
 
-## Limites honnêtes
+## Honest limits
 
-| Affirmation | Statut |
+| Claim | Status |
 |---|---|
-| P_sig borné dans le temps | ✅ VALIDÉ |
-| Saut de régime détecté | ✅ VALIDÉ |
-| Dissociation augmente P_sig | ✅ VALIDÉ |
-| S_vN invariant (CPU) | ✅ VALIDÉ (par construction — nuance) |
-| Λ_LCT réduit l'exotic matter | ✅ VALIDÉ (3.9%, faible) |
-| Mur warp atteint 1.80 | ⚠️ PAS ENCORE (limite de calcul) |
-| Λ_LCT tenseur 4D complet | ⚠️ PAS ENCORE |
-| Λ_LCT élimine l'exotic matter | ❌ NON validé |
+| P_sig bounded in time | ✅ VALIDATED |
+| Regime jump detected | ✅ VALIDATED |
+| Dissociation increases P_sig | ✅ VALIDATED |
+| S_vN invariant (CPU) | ✅ VALIDATED (by construction — nuance) |
+| Λ_LCT reduces exotic matter | ✅ VALIDATED (3.9%, weak) |
+| Warp wall reaches 1.80 | ⚠️ NOT YET (compute limit) |
+| Λ_LCT full 4D tensor | ⚠️ NOT YET |
+| Λ_LCT eliminates exotic matter | ❌ NOT validated |
 
-Voir la section « Limites honnêtes » du site ([`index.html`](index.html)) et le
-document `docs/LIMITES_HONNETES.md` du projet warp.
+See the "Honest limits" section of the site ([`index.html`](index.html)) and the
+`docs/LIMITES_HONNETES.md` document of the warp project.
 
 ---
 
-## Structure du dépôt
+## Repository structure
 
 ```
 scientist-research-/
-├── index.html              # site illustré (13 figures intégrées)
-├── README.md               # ce fichier
+├── index.html              # illustrated site (13 embedded figures)
+├── README.md               # this file
 ├── scripts/
-│   └── generate_all_figures.py   # régénère les 13 figures
-└── docs/figures/           # 13 figures pédagogiques
+│   └── generate_all_figures.py   # regenerates the 13 figures
+└── docs/figures/           # 13 educational figures
 ```
 
-## Régénérer les figures
+## Regenerate the figures
 
 ```bash
 pip install numpy scipy networkx scikit-learn matplotlib gudhi sympy psutil
 python scripts/generate_all_figures.py
 ```
 
-## Redirections (loi LCT, preuves, preprint)
+## Pointers (LCT law, evidence, preprint)
 
-- **Preprint (OSF)** : https://doi.org/10.17605/OSF.IO/6JZMB
-- **IBM Quantum (vérifier les jobs QPU)** : https://www.ibm.com/quantum
-- **Loi LCT (dépôt AEON)** : `RATISS-ODV-AEON/kernel/ttf/lct_law.py`
-- **Projet warp (application à Alcubierre)** : modules `warp/` (métrique, Λ_LCT,
-  noyau universel, dissociation, stabilité, S_vN)
+- **Preprint (OSF)**: https://doi.org/10.17605/OSF.IO/6JZMB
+- **IBM Quantum (check the QPU jobs)**: https://www.ibm.com/quantum
+- **LCT law (AEON repository)**: `RATISS-ODV-AEON/kernel/ttf/lct_law.py`
+- **Warp project (application to Alcubierre)**: `warp/` modules (metric, Λ_LCT,
+  universal kernel, dissociation, stability, S_vN)
 
 ---
 
-## 🛸 Mission Warp 2026 — 11 vols, 22 examens (NOUVEAU)
+## 🛸 Warp Mission 2026 — 11 flights, 22 exams (NEW)
 
-Bulle d'Alcubierre (vrai profil tanh) + vaisseau 10 t dans l'univers-jouet
-RATISS : 11 vols simulés, batterie **W01–W22** (état, intrication, résidus,
-déformation, relativité). Code : [`warp/`](warp/) · Faits bruts :
-[`warp/resultats/w22.json`](warp/resultats/w22.json) · Doc complet :
-[`MISSION_WARP_2026.md`](MISSION_WARP_2026.md) · Construction :
+Alcubierre bubble (real tanh profile) + 10 t ship in the RATISS toy universe:
+11 simulated flights, **W01–W22** battery (state, entanglement, residuals,
+deformation, relativity). Code: [`warp/`](warp/) · Raw facts:
+[`warp/resultats/w22.json`](warp/resultats/w22.json) · Full doc:
+[`MISSION_WARP_2026.md`](MISSION_WARP_2026.md) · Build:
 [`CONSTRUIRE_BULLE_WARP.md`](CONSTRUIRE_BULLE_WARP.md)
 
-| Verdict | Mesure |
+| Verdict | Measurement |
 |---|---|
-| Seuil de rentabilité | facteur warp 0.36 (v2) → **1.95 (v4) → 12.5 (v8)** : au-delà de ~v3, la bulle bat le classique en coût ET temps |
-| Coût ∝ v^-1.4 | 122 → 59 → 22 → **6.8** : plus vite = moins cher (hit-and-run) |
-| Bulle PROPRE (canalisée) | messagers directifs : **159%** de l'expansion couverte, exotique **négatif** ; isotropes : -2% (traînée) |
-| Panne à mi-vol | on arrive quand même : +6% temps, **-19% coût** (dérive gratuite) |
-| Sillage | H1 **+12%** (rides topologiques), vite = propre (0.071 → 0.029) |
-| Jumeaux | bord **+0.24 cycles** (couplage, pas RG — honnête) |
+| Break-even threshold | warp factor 0.36 (v2) → **1.95 (v4) → 12.5 (v8)**: beyond ~v3, the bubble beats classical on cost AND time |
+| Cost ∝ v^-1.4 | 122 → 59 → 22 → **6.8**: faster = cheaper (hit-and-run) |
+| CLEAN bubble (channeled) | directive messengers: **159%** of the expansion covered, exotic **negative**; isotropic: -2% (drag) |
+| Mid-flight failure | we still arrive: +6% time, **-19% cost** (free drift) |
+| Wake | H1 **+12%** (topological ripples), fast = clean (0.071 → 0.029) |
+| Twins | edge **+0.24 cycles** (coupling, not GR — honest) |
 
-![cout vitesse](docs/figures/fig_warp_cout_vitesse.png)
-![vols](docs/figures/fig_warp_vols.png)
-![bulle](docs/figures/fig_warp_bulle.png)
-![champ](docs/figures/fig_warp_champ.png)
+![cost speed](docs/figures/fig_warp_cout_vitesse.png)
+![flights](docs/figures/fig_warp_vols.png)
+![bubble](docs/figures/fig_warp_bulle.png)
+![field](docs/figures/fig_warp_champ.png)
 
-Limites (W08 sync spontanée, W15 mur étalé 0.24, W20 pas d'horizon, pas
-d'extrapolation jouet→c) : [`docs/LIMITES_HONNETES.md`](docs/LIMITES_HONNETES.md).
+Limits (W08 spontaneous sync, W15 wall spread 0.24, W20 no horizon, no
+toy→c extrapolation): [`docs/LIMITES_HONNETES.md`](docs/LIMITES_HONNETES.md).
 
 ---
 
-*© 2026 JOHNKING0 & Jonathan Evina. Loi LCT figée. Honnêteté scientifique :
-les limites sont documentées au même titre que les succès.*
+*© 2026 JOHNKING0 & Jonathan Evina. LCT law frozen. Scientific honesty:
+limits are documented on the same footing as successes.*
