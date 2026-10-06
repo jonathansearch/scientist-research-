@@ -11,9 +11,9 @@
 <h1 align="center">scientist-research — Black holes, Alcubierre &amp; the Topological Coherence Law</h1>
 
 <p align="center">
-  <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/Licence-MIT-42d6ad?style=for-the-badge"></a>
+  <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/License-MIT-42d6ad?style=for-the-badge"></a>
   <img alt="Python" src="https://img.shields.io/badge/Python-Figures-79b8ff?style=for-the-badge&logo=python&logoColor=white">
-  <img alt="Static site" src="https://img.shields.io/badge/Site-statique%20GitHub%20Pages-6929c4?style=for-the-badge">
+  <img alt="Static site" src="https://img.shields.io/badge/Site-static%20GitHub%20Pages-6929c4?style=for-the-badge">
   <img alt="DOI" src="https://img.shields.io/badge/DOI-10.17605%2FOSF.IO%2F6JZMB-ff927d?style=for-the-badge">
 </p>
 
